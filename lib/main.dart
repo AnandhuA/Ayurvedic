@@ -1,6 +1,7 @@
-import 'package:ayurvedic/core/constants/sizes.dart';
-import 'package:ayurvedic/views/widgets/custom_card_widget.dart';
+import 'package:ayurvedic/viewmodels/auth_viewmodel.dart';
+import 'package:ayurvedic/views/auth/login_screen.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 void main() {
   runApp(const MyApp());
@@ -11,22 +12,13 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      home: Scaffold(
-        body: Center(
-          child: Padding(
-            padding: const EdgeInsets.all(50),
-            child: Column(
-              mainAxisAlignment: .center,
-              children: [
-                CustomCardWidget(),
-                AppSpacing.h12(),
-                CustomCardWidget(),
-              ],
-            ),
-          ),
-        ),
+    return MultiProvider(
+      providers: [
+        ChangeNotifierProvider<AuthViewModel>(create: (_) => AuthViewModel()),
+      ],
+      child: MaterialApp(
+        debugShowCheckedModeBanner: false,
+        home: LoginScreen(),
       ),
     );
   }

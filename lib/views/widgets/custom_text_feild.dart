@@ -42,9 +42,10 @@ class _CustomTextFeildState extends State<CustomTextFeild> {
           controller: widget.controller,
           obscureText: visibility,
           validator: widget.validator,
+
           decoration: InputDecoration(
             filled: true,
-
+            hintText: widget.hitText,
             fillColor: AppColors.grey.withValues(alpha: 0.2),
             border: OutlineInputBorder(
               borderRadius: AppRadius.br12(),

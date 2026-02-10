@@ -37,7 +37,7 @@ class DioClient {
         onError: (error, handler) {
           final message = ErrorHelper.getErrorMessage(error);
 
-          log("Dio Error: $message");
+          log("ooDio Error: $message");
 
           return handler.reject(
             DioException(
