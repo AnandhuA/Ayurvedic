@@ -16,6 +16,8 @@ class AppColors {
   static const Color black = Color(0xFF222222);
 
   static const Color textWhite = Color(0xFFFFFFFF);
-  static const Color textGrey = Colors.grey;
+  static const Color textGrey = Color.fromARGB(255, 126, 126, 126);
   static const Color textBlack = Color(0xFF222222);
+
+  static const Color cardBgColor = Color.fromARGB(255, 228, 227, 227);
 }
