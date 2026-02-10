@@ -1,16 +1,47 @@
-# ayurvedic
+# Ayurvedic Centre Patient Management App
 
-A new Flutter project.
+---
 
-## Getting Started
+### Folder Structure
 
-This project is a starting point for a Flutter application.
+```
+lib/
+├── core/
+├── models/
+├── services/
+├── viewmodels/
+├── views/
+└── main.dart
+```
 
-A few resources to get you started if this is your first Flutter project:
+### Architecture Flow
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+View → ViewModel → Service → API
+ViewModel updates state → UI rebuilds automatically
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+---
+## 🧪 How to Run
+
+1. Clone the repository:
+
+```
+git clone "https://github.com/AnandhuA/Ayurvedic.git"
+```
+
+2. Navigate to project:
+
+```
+cd ayurvedic
+```
+
+3. Install dependencies:
+
+```
+flutter pub get
+```
+
+4. Run the app:
+
+```
+flutter run
+```
