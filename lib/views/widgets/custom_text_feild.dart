@@ -8,11 +8,13 @@ class CustomTextFeild extends StatefulWidget {
   final String hitText;
   final bool isPassword;
   final String? Function(String?)? validator;
+  final TextInputType keyboardType;
 
   const CustomTextFeild({
     super.key,
     this.validator,
     this.isPassword = false,
+    this.keyboardType = TextInputType.text,
     required this.controller,
     required this.titleText,
     required this.hitText,
@@ -42,7 +44,7 @@ class _CustomTextFeildState extends State<CustomTextFeild> {
           controller: widget.controller,
           obscureText: visibility,
           validator: widget.validator,
-
+          keyboardType: widget.keyboardType,
           decoration: InputDecoration(
             filled: true,
             hintText: widget.hitText,

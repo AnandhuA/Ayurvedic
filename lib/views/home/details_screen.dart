@@ -92,13 +92,14 @@ class DetailsScreen extends StatelessWidget {
         ),
         Column(
           crossAxisAlignment: CrossAxisAlignment.start,
-          children: const [
+          children: [
             Text(
               "Amritha Ayurveda",
               style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
             ),
             SizedBox(height: 4),
             Text("Kumarakom"),
+            Text("${patient.branch?.gst}"),
           ],
         ),
       ],
