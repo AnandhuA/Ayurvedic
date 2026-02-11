@@ -1,4 +1,5 @@
 import 'package:ayurvedic/viewmodels/auth_viewmodel.dart';
+import 'package:ayurvedic/viewmodels/patient_viewmodel.dart';
 import 'package:ayurvedic/views/splash/splash_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -15,6 +16,7 @@ class MyApp extends StatelessWidget {
     return MultiProvider(
       providers: [
         ChangeNotifierProvider<AuthViewModel>(create: (_) => AuthViewModel()),
+        ChangeNotifierProvider(create: (_) => PatientViewModel()),
       ],
       child: MaterialApp(
         debugShowCheckedModeBanner: false,

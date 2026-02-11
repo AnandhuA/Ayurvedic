@@ -1,10 +1,18 @@
 import 'package:ayurvedic/core/constants/colors.dart';
 import 'package:ayurvedic/core/constants/sizes.dart';
+import 'package:ayurvedic/core/utlis/date_helper.dart';
 import 'package:ayurvedic/core/utlis/media_query_helper.dart';
+import 'package:ayurvedic/models/patient_model.dart';
 import 'package:flutter/material.dart';
 
 class CustomCardWidget extends StatelessWidget {
-  const CustomCardWidget({super.key});
+  final Patient patient;
+  final int index;
+  const CustomCardWidget({
+    super.key,
+    required this.patient,
+    required this.index,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -22,7 +30,7 @@ class CustomCardWidget extends StatelessWidget {
               crossAxisAlignment: .start,
               children: [
                 Text(
-                  "1.",
+                  "${index + 1}.",
                   style: TextStyle(fontWeight: FontWeight.w500, fontSize: 18),
                 ),
                 AppSpacing.w8(),
@@ -31,7 +39,7 @@ class CustomCardWidget extends StatelessWidget {
                     crossAxisAlignment: .start,
                     children: [
                       Text(
-                        "Vikram Singh",
+                        patient.name,
                         style: TextStyle(
                           fontWeight: FontWeight.w500,
                           fontSize: 18,
@@ -41,7 +49,7 @@ class CustomCardWidget extends StatelessWidget {
                       ),
                       AppSpacing.h12(),
                       Text(
-                        "Couple Combo Package (Rejuve)Couple Combo Package (Rejuven)Couple Combo Package (Rejuven)",
+                        patient.address,
                         maxLines: 1,
                         overflow: TextOverflow.ellipsis,
                         style: TextStyle(
@@ -54,12 +62,14 @@ class CustomCardWidget extends StatelessWidget {
                         children: [
                           _IconsTest(
                             icon: Icons.calendar_month,
-                            text: "31/01/2024",
+                            text: DateHelper.formatToDDMMYYYY(
+                              patient.updatedAt,
+                            ),
                           ),
                           AppSpacing.w8(),
                           _IconsTest(
                             icon: Icons.people_outline,
-                            text: "Jithesh",
+                            text: patient.user,
                           ),
                         ],
                       ),
