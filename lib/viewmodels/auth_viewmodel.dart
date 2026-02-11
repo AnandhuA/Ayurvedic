@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:ayurvedic/core/utlis/error_helper.dart';
 import 'package:flutter/material.dart';
 import '../services/auth_service.dart';
@@ -19,17 +21,15 @@ class AuthViewModel extends ChangeNotifier {
       _setLoading(true);
       _errorMessage = null;
 
-      await _authService.login(
-        username: username,
-        password: password,
-      );
+      await _authService.login(username: username, password: password);
 
       _setLoading(false);
-      return true; 
+      return true;
     } catch (e) {
+      log("error viewmodel $e");
       _errorMessage = ErrorHelper.getErrorMessage(e);
       _setLoading(false);
-      return false; 
+      return false;
     }
   }
 

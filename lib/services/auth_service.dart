@@ -12,15 +12,20 @@ class AuthService {
   }) async {
     final response = await _dio.post(
       ApiUrls.login,
-      data: {"username": username, "password": password},
+      data: FormData.fromMap({"username": username, "password": password}),
     );
 
-    final token = response.data["token"];
+    final data = response.data;
 
-    if (token != null) {
+    if (data["status"] == true) {
+      final token = data["token"];
+
+      if (token == null || token.toString().isEmpty) {
+        throw Exception("Token missing from response");
+      }
       await TokenService.saveToken(token);
     } else {
-      throw Exception("Token not found");
+      throw Exception(data["message"] ?? "Login failed");
     }
   }
 }

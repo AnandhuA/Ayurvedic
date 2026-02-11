@@ -12,8 +12,8 @@ class DioClient {
     dio = Dio(
       BaseOptions(
         baseUrl: ApiUrls.baseUrl,
-        connectTimeout: const Duration(seconds: 10),
-        receiveTimeout: const Duration(seconds: 10),
+        connectTimeout: const Duration(seconds: 30),
+        receiveTimeout: const Duration(seconds: 30),
         headers: {"Accept": "application/json"},
       ),
     );
@@ -27,7 +27,9 @@ class DioClient {
         onRequest: (options, handler) async {
           final token = await TokenService.getToken();
 
-          if (token != null && token.isNotEmpty) {
+          if (token != null &&
+              token.isNotEmpty &&
+              options.path != ApiUrls.login) {
             options.headers["Authorization"] = "Bearer $token";
           }
 
@@ -37,16 +39,9 @@ class DioClient {
         onError: (error, handler) {
           final message = ErrorHelper.getErrorMessage(error);
 
-          log("ooDio Error: $message");
+          log("Dio Error: $message");
 
-          return handler.reject(
-            DioException(
-              requestOptions: error.requestOptions,
-              error: message,
-              response: error.response,
-              type: error.type,
-            ),
-          );
+          return handler.reject(error);
         },
       ),
     );

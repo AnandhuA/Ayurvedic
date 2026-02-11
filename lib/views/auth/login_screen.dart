@@ -87,7 +87,8 @@ class _LoginScreenState extends State<LoginScreen> {
                           controller: _emailController,
                           titleText: "Email",
                           hitText: "Enter Your Email",
-                          validator: ValidatorHelper.email,
+                          validator: ValidatorHelper.name,
+                          // validator: ValidatorHelper.email,
                         ),
                         AppSpacing.h12(),
                         CustomTextFeild(
@@ -95,6 +96,7 @@ class _LoginScreenState extends State<LoginScreen> {
                           titleText: "Password",
                           hitText: "Enter Password",
                           validator: ValidatorHelper.password,
+                          isPassword: true,
                         ),
                         AppSpacing.hMq(context, 10),
                         Consumer<AuthViewModel>(
