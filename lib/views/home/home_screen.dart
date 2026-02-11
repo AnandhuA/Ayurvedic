@@ -2,6 +2,7 @@ import 'package:ayurvedic/core/constants/colors.dart';
 import 'package:ayurvedic/core/constants/sizes.dart';
 import 'package:ayurvedic/core/utlis/media_query_helper.dart';
 import 'package:ayurvedic/viewmodels/patient_viewmodel.dart';
+import 'package:ayurvedic/views/home/details_screen.dart';
 import 'package:ayurvedic/views/widgets/custom_buttom.dart';
 import 'package:ayurvedic/views/widgets/custom_card_widget.dart';
 import 'package:ayurvedic/views/widgets/empty_screen.dart';
@@ -142,9 +143,21 @@ class _HomeScreenState extends State<HomeScreen> {
                             separatorBuilder: (context, index) =>
                                 AppSpacing.h16(),
                             itemCount: patientProvider.patients.length,
-                            itemBuilder: (context, index) => CustomCardWidget(
-                              patient: patientProvider.patients[index],
-                              index: index,
+                            itemBuilder: (context, index) => InkWell(
+                              onTap: () {
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                    builder: (context) => DetailsScreen(
+                                      patient: patientProvider.patients[index],
+                                    ),
+                                  ),
+                                );
+                              },
+                              child: CustomCardWidget(
+                                patient: patientProvider.patients[index],
+                                index: index,
+                              ),
                             ),
                           ),
                         ),
