@@ -78,11 +78,11 @@ class _LoginScreenState extends State<LoginScreen> {
                           maxLines: 2,
                           overflow: TextOverflow.ellipsis,
                           style: TextStyle(
-                            fontSize: 30,
-                            fontWeight: FontWeight.bold,
+                            fontSize: 28,
+                            fontWeight: FontWeight.w500,
                           ),
                         ),
-                        AppSpacing.h12(),
+                        AppSpacing.h24(),
                         CustomTextFeild(
                           controller: _emailController,
                           titleText: "Email",
