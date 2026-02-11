@@ -35,7 +35,7 @@ class ValidatorHelper {
     return null;
   }
 
-   static String? confirmPassword({
+  static String? confirmPassword({
     required String? password,
     required String? confirmPassword,
   }) {
@@ -47,6 +47,27 @@ class ValidatorHelper {
       return 'Passwords do not match';
     }
 
+    return null;
+  }
+
+  static String? phone(String? value) {
+    if (value == null || value.trim().isEmpty) {
+      return 'Phone number is required';
+    }
+
+    final phoneRegex = RegExp(r'^[0-9]{10}$');
+
+    if (!phoneRegex.hasMatch(value.trim())) {
+      return 'Enter a valid 10-digit phone number';
+    }
+
+    return null;
+  }
+
+  static String? isRequired(String? value, {String fieldName = "This field"}) {
+    if (value == null || value.trim().isEmpty) {
+      return '$fieldName is required';
+    }
     return null;
   }
 }

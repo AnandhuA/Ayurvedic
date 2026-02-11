@@ -28,7 +28,7 @@ class CustomButtom extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return InkWell(
-      onTap: onTap,
+      onTap: isLoading ? null : onTap,
       child: Container(
         width: MQ.w(context, width),
         height: MQ.h(context, height),

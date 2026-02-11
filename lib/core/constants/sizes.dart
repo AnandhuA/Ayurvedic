@@ -1,3 +1,4 @@
+import 'package:ayurvedic/core/utlis/media_query_helper.dart';
 import 'package:flutter/widgets.dart';
 
 class AppSpacing {
@@ -11,6 +12,8 @@ class AppSpacing {
   static SizedBox h20() => SizedBox(height: 20);
   static SizedBox h24() => SizedBox(height: 24);
   static SizedBox h32() => SizedBox(height: 32);
+  static SizedBox hMq(BuildContext context, double percent) =>
+      SizedBox(height: MQ.h(context, percent));
 
   // SIZEDBOX - WIDTH
   static SizedBox w4() => SizedBox(width: 4);
@@ -20,6 +23,8 @@ class AppSpacing {
   static SizedBox w20() => SizedBox(width: 20);
   static SizedBox w24() => SizedBox(width: 24);
   static SizedBox w32() => SizedBox(width: 32);
+  static SizedBox wMq(BuildContext context, double percent) =>
+      SizedBox(width: MQ.h(context, percent));
 }
 
 class AppPadding {
@@ -104,12 +109,11 @@ class FontScale {
     final width = MediaQuery.of(context).size.width;
 
     if (width < 360) return 0.9;
-    if (width < 600) return 1.0; 
-    if (width < 900) return 1.1; 
+    if (width < 600) return 1.0;
+    if (width < 900) return 1.1;
     return 1.2; // large screens
   }
 }
-
 
 class HeightScale {
   static double button(BuildContext context) {
